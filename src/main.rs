@@ -9,7 +9,12 @@ fn main() {
 
     io::stdin()
         .read_line(&mut choice)
-        .expect("Pressed wrong button");
+        .expect("Failed to read line");
 
-    println!("You pressed to go forward");
+    match choice.trim() {
+        "forward" => println!("Du valde forward"),
+        "right" => println!("Du valde right"),
+        "left" => println!("Du valde left"),
+        _ => println!("..."),
+    }
 }
