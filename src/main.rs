@@ -6,15 +6,31 @@ fn main() {
     println!("What do you choose");
 
     let mut choice = String::new();
-
     io::stdin()
         .read_line(&mut choice)
         .expect("Failed to read line");
+    
+    
+    match choice.trim(){
+        "forward" => forward(),
 
-    match choice.trim() {
-        "forward" => println!("Du valde forward"),
-        "right" => println!("Du valde right"),
-        "left" => println!("Du valde left"),
-        _ => println!("..."),
-    }
+        "right" => right(),
+        
+        "left" => left(),
+        
+        _ => println!("Var snäll och välj ett bra alternativ"),
+    }    
+}
+
+
+fn forward(){
+    println!("Du har kallat på forward funktionen!");
+}
+
+fn right(){
+    println!("Du har kallat på right funktionen!");
+}
+
+fn left(){
+    println!("Du har kallat på left funktionen!");
 }
