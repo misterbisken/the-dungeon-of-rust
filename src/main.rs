@@ -1,12 +1,10 @@
 use std::io::{self, Write};
 
-
 struct Player {
     vapen: bool,
     player_hp: u32,
     player_dmg: u32,
 }
-
 
 struct Monster {
     monster_hp: u32,
@@ -20,48 +18,49 @@ struct Game {
 }
 
 fn main() {
-    let mut game = Game { nyckel: false, running: true };
-
+    let mut game = Game {
+        nyckel: false,
+        running: true,
+    };
 
     print!("\x1B[2J\x1B[1;1H");
     io::stdout().flush().unwrap();
 
     println!("You awake in a dark dungeon!");
     while game.running == true {
-        
-     {
-        println!("You can go left, forward, right");
-        println!("What do you choose");
+        {
+            println!("You can go left, forward, right");
+            println!("What do you choose");
+            println!("quit to exit the game");
 
-        let mut choice = String::new();
-        io::stdin()
-            .read_line(&mut choice)
-            .expect("Failed to read line");
+            let mut choice = String::new();
+            io::stdin()
+                .read_line(&mut choice)
+                .expect("Failed to read line");
 
-        match choice.trim() {
-            "forward" => forward(&mut game),
+            match choice.trim() {
+                "forward" => forward(&mut game),
 
-            "right" => right(&mut game),
+                "right" => right(&mut game),
 
-            "left" => left(),
+                "left" => left(&mut game),
 
-            _ => println!("Var snäll och välj ett bra alternativ"),
+                "quit" => quit(&mut game),
+
+                _ => println!("Var snäll och välj ett bra alternativ"),
+            }
         }
-    }    
     }
 }
 
 fn forward(game: &mut Game) {
-
     print!("\x1B[2J\x1B[1;1H");
     io::stdout().flush().unwrap();
-    
 
     println!("Du står framför en stor låst dörr!");
-    if game.nyckel == false {
+    if !game.nyckel {
         println!("Du har ingen nyckel!")
     } else {
-
         print!("\x1B[2J\x1B[1;1H");
         io::stdout().flush().unwrap();
 
@@ -79,14 +78,15 @@ fn right(game: &mut Game) {
 
     println!("Du hittade en nyckel!");
     game.nyckel = true;
-
 }
 
-fn left() {
-
+fn left(game: &mut Game) {
     print!("\x1B[2J\x1B[1;1H");
     io::stdout().flush().unwrap();
-    
 
     println!("Du hittar ett svärd");
+}
+
+fn quit(game: &mut Game) {
+    game.running = false;
 }
