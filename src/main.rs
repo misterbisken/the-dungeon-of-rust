@@ -1,28 +1,8 @@
 use std::io::{self, Write};
 //importerar så att jag kan radera text samt läsa av inkommande text från användaren 
+mod game;
+use crate::game::Game;
 
-
-struct Player {
-    vapen: bool,
-    player_hp: u32,
-    player_dmg: u32,
-}
-//Detta är vad spelaren har för värde. Sparar den i en structure man kan kalla på senare
-
-
-struct Monster {
-    monster_hp: u32,
-    monster_dmg: u32,
-    monster_alive: bool,
-}
-//Monster och dess värden, likt ovan...
-
-struct Game {
-    nyckel: bool,
-    running: bool,
-}
-//Detta är alla variabler för spelet. Tillexempel två bools som checkar ifall man har nyckel eller ej
-//Samt kan göra att spelet slutar ifall running blir false
 
 
 fn main() {
@@ -42,6 +22,9 @@ fn main() {
             println!("You can go left, forward, right");
             println!("What do you choose");                 //Första valen som spelaren får 
             println!("quit to exit the game");
+            println!("");
+            println!("");
+            println!("(left)   (forward)   (right)");
 
             let mut choice = String::new();                 //Skapar input variablen    
             io::stdin()                                     //Använder importen från toppen
@@ -81,23 +64,66 @@ fn forward(game: &mut Game) {       //Funktionen som är om forward
 }
 
 fn right(game: &mut Game) {         //Funkionen som är om right
-    //println!("Du möter ett stort monster!");
-    //println!("Vill du slåss eller gå tillbaka?");
+
 
     print!("\x1B[2J\x1B[1;1H");
     io::stdout().flush().unwrap();
 
-    println!("Du hittade en nyckel!");
-    game.nyckel = true;
+    println!("You have stumbled on a monster");
+    println!("Will you fight or run?");
+    println!("");
+    println!("");
+    println!("(fight)    (run)");
+
+
+
+
+    let mut acceptbattle = String::new();
+    io::stdin()
+        .read_line(&mut acceptbattle)
+        .expect("Failed to read line");
+
+   // match acceptbattle.trim(){
+
+     //   "fight" => fight(),
+
+       // _ => println!("Please "),
+
+  //  }
+
+    //println!("Du hittade en nyckel!");
+    //game.nyckel = true;
 }
 
 fn left(game: &mut Game) {      //Funktionen som är om left
     print!("\x1B[2J\x1B[1;1H");
     io::stdout().flush().unwrap();
 
-    println!("Du hittar ett svärd");
+    println!("You found a weapon!");
 }
 
 fn quit(game: &mut Game) {      //Ifall spelaren skriver quit så kommer denna kallas och stoppar while loopen
     game.running = false;
 }
+
+/* 
+
+fn fight(game: &mut Game, Player.player_hp()){
+
+    
+
+    print!("\x1B[2J\x1B[1;1H");
+    io::stdout().flush().unwrap();
+
+    println!("You started the fight!");
+    while Player.player_hp > 0 && Monster.monster_hp > 0 {
+
+    //   println!("You start by hitting the monster for {}", Player.player_dmg); 
+
+
+    }
+
+    //println!("You have {} hp" , Player.player_hp = 20, "and {} damage", Player.player_dmg = 3);
+}
+
+*/
