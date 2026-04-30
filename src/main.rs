@@ -1,6 +1,8 @@
 use std::io::{self, Write};
 //importerar så att jag kan radera text samt läsa av inkommande text från användaren 
 mod game;
+mod rooms;
+use crate::rooms::forward;
 use crate::game::Game;
 
 
@@ -47,21 +49,7 @@ fn main() {
     }
 }
 
-fn forward(game: &mut Game) {       //Funktionen som är om forward
-    print!("\x1B[2J\x1B[1;1H");
-    io::stdout().flush().unwrap();
 
-    println!("Du står framför en stor låst dörr!");
-    if !game.nyckel {
-        println!("Du har ingen nyckel!")
-    } else {
-        print!("\x1B[2J\x1B[1;1H");
-        io::stdout().flush().unwrap();
-
-        println!("Du vann!");
-        game.running = false;
-    }
-}
 
 fn right(game: &mut Game) {         //Funkionen som är om right
 
