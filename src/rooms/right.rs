@@ -8,6 +8,9 @@ pub fn right(game: &mut Game, player: &mut Player, monster: &mut Monster) {
     print!("\x1B[2J\x1B[1;1H");
     io::stdout().flush().unwrap();
 
+    if monster.monster_alive == true {
+
+
     println!("You have stumbled on a monster");
     println!("Will you fight or run?");
     println!("");
@@ -23,10 +26,14 @@ pub fn right(game: &mut Game, player: &mut Player, monster: &mut Monster) {
 
     "fight" => fight(game, player, monster),
 
-     _ => println!("Please "),
+     _ => println!("Please enter a valid answer"),
 
       }
 
-    //println!("Du hittade en nyckel!");
-    //game.nyckel = true;
+    } else {
+        
+        println!("Du har redan dödat monstret och fått nyckeln!");
+
+    }
+
 }

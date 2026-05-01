@@ -47,7 +47,7 @@ fn main() {
 
                 "right" => right(&mut game, &mut player, &mut monster),
 
-                "left" => left(&mut game),
+                "left" => left(&mut game, &mut player),
 
                 "quit" => quit(&mut game),
 
