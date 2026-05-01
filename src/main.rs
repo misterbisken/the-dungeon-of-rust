@@ -1,8 +1,13 @@
 use std::io::{self, Write};
 //importerar så att jag kan radera text samt läsa av inkommande text från användaren
 mod game;
+mod monster;
+mod player;
 mod rooms;
+
 use crate::game::Game;
+use crate::monster::Monster;
+use crate::player::Player;
 use crate::rooms::forward;
 use crate::rooms::left;
 use crate::rooms::right;
@@ -12,6 +17,9 @@ fn main() {
         nyckel: false,
         running: true,
     };
+
+    let mut player = Player::new();
+    let mut monster = Monster::new();
 
     print!("\x1B[2J\x1B[1;1H"); //Detta stycket är det som gör att text rensas. 
     io::stdout().flush().unwrap(); // <==
