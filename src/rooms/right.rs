@@ -1,7 +1,8 @@
-use crate::game::Game;
+use crate::{game::Game, Monster, Player};
 use std::io::{self, Write};
+use super::fight::fight;
 
-pub fn right(game: &mut Game) {
+pub fn right(game: &mut Game, player: &mut Player, monster: &mut Monster) {
     //Funkionen som är om right
 
     print!("\x1B[2J\x1B[1;1H");
@@ -18,13 +19,13 @@ pub fn right(game: &mut Game) {
         .read_line(&mut acceptbattle)
         .expect("Failed to read line");
 
-    // match acceptbattle.trim(){
+    match acceptbattle.trim(){
 
-    //   "fight" => fight(),
+    "fight" => fight(game, player, monster),
 
-    // _ => println!("Please "),
+     _ => println!("Please "),
 
-    //  }
+      }
 
     //println!("Du hittade en nyckel!");
     //game.nyckel = true;
