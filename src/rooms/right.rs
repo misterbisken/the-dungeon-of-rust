@@ -8,7 +8,7 @@ pub fn right(game: &mut Game, player: &mut Player, monster: &mut Monster) {
     print!("\x1B[2J\x1B[1;1H");
     io::stdout().flush().unwrap();
 
-    if monster.monster_alive == true {
+    if monster.monster_alive {
         println!("You have stumbled on a monster");
         println!("Will you fight or run?");
         println!("");
@@ -20,6 +20,7 @@ pub fn right(game: &mut Game, player: &mut Player, monster: &mut Monster) {
         println!("Player hp {}", player.player_hp);
         println!("Player dmg {}", player.player_dmg);
         println!("Player weapon {}", player.vapen);
+        println!("");
 
         let mut acceptbattle = String::new();
         io::stdin()

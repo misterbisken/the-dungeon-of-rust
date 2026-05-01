@@ -4,7 +4,7 @@ use crate::player::Player;
 use std::io::{self, Write};
 
 pub fn fight(game: &mut Game, player: &mut Player, monster: &mut Monster) {
-    if player.vapen == true {
+    if player.vapen {
         println!("Du har ett vapen");
     } else {
         println!("Du har inget vapen");

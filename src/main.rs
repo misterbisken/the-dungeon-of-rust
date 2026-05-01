@@ -32,7 +32,7 @@ fn main() {
         .read_line(&mut _continue)
         .expect("Failed to read line");
 
-    while game.running == true {
+    while game.running {
         //Här börjar spelmotorn vilket är en enkel while sats
 
         print!("\x1B[2J\x1B[1;1H"); //Detta stycket är det som gör att text rensas. 
