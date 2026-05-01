@@ -45,7 +45,7 @@ fn main() {
                 //Början på match satsen
                 "forward" => forward(&mut game),
 
-                "right" => right(&mut game),
+                "right" => right(&mut game, &mut player, &mut monster),
 
                 "left" => left(&mut game),
 
