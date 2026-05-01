@@ -25,15 +25,29 @@ fn main() {
     io::stdout().flush().unwrap(); // <==
 
     println!("You awake in a dark dungeon!");
+    println!("");
+
+    let mut _continue = String::new();
+    io::stdin()
+        .read_line(&mut _continue)
+        .expect("Failed to read line");
+
     while game.running == true {
         //Här börjar spelmotorn vilket är en enkel while sats
+
+        print!("\x1B[2J\x1B[1;1H"); //Detta stycket är det som gör att text rensas. 
+        io::stdout().flush().unwrap(); // <==
+
         {
             println!("You can go left, forward, right");
+            println!("");
             println!("What do you choose"); //Första valen som spelaren får 
+            println!("");
             println!("quit to exit the game");
             println!("");
             println!("");
             println!("(left)   (forward)   (right)");
+            println!("");
 
             let mut choice = String::new(); //Skapar input variablen    
             io::stdin() //Använder importen från toppen

@@ -7,19 +7,23 @@ pub fn left(game: &mut Game, player: &mut Player) {
     io::stdout().flush().unwrap();
 
     if player.vapen == true {
+        println!("Du har redan hittat vapnet!");
 
-        println!("Du har redan hittat vapnet!")
-
+        let mut _continue = String::new();
+        io::stdin()
+            .read_line(&mut _continue)
+            .expect("Failed to read line");
     } else {
-
-
         println!("You found a weapon!");
-        player.player_dmg = 7;
+        println!("");
+        println!("Press Enter to continue");
+
+        player.player_dmg = 8;
         player.vapen = true;
 
+        let mut _continue = String::new();
+        io::stdin()
+            .read_line(&mut _continue)
+            .expect("Failed to read line");
     }
-    
-
-
-
 }
